@@ -4,12 +4,16 @@ import { Interceptors } from './core/OpenAPI';
 import { FetchHttpRequest } from './core/FetchHttpRequest';
 
 import { ProfileInfoService } from './services.gen';
+import { UsersPermissionsAuthService } from './services.gen';
+import { UsersPermissionsUsersRolesService } from './services.gen';
 
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 
 export class Client {
 
 	public readonly profileInfo: ProfileInfoService;
+	public readonly usersPermissionsAuth: UsersPermissionsAuthService;
+	public readonly usersPermissionsUsersRoles: UsersPermissionsUsersRolesService;
 
 	public readonly request: BaseHttpRequest;
 
@@ -31,5 +35,7 @@ export class Client {
 		});
 
 		this.profileInfo = new ProfileInfoService(this.request);
+		this.usersPermissionsAuth = new UsersPermissionsAuthService(this.request);
+		this.usersPermissionsUsersRoles = new UsersPermissionsUsersRolesService(this.request);
 	}
 }

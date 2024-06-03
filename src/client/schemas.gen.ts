@@ -459,3 +459,111 @@ export const $ProfileInfoResponse = {
         }
     }
 } as const;
+
+export const $Users_Permissions_Role = {
+    type: 'object',
+    properties: {
+        id: {
+            type: 'number'
+        },
+        name: {
+            type: 'string'
+        },
+        description: {
+            type: 'string'
+        },
+        type: {
+            type: 'string'
+        },
+        createdAt: {
+            type: 'string',
+            format: 'date-time'
+        },
+        updatedAt: {
+            type: 'string',
+            format: 'date-time'
+        }
+    }
+} as const;
+
+export const $Users_Permissions_User = {
+    type: 'object',
+    properties: {
+        id: {
+            type: 'number',
+            example: 1
+        },
+        username: {
+            type: 'string',
+            example: 'foo.bar'
+        },
+        email: {
+            type: 'string',
+            example: 'foo.bar@strapi.io'
+        },
+        provider: {
+            type: 'string',
+            example: 'local'
+        },
+        confirmed: {
+            type: 'boolean',
+            example: true
+        },
+        blocked: {
+            type: 'boolean',
+            example: false
+        },
+        createdAt: {
+            type: 'string',
+            format: 'date-time',
+            example: '2022-06-02T08:32:06.258Z'
+        },
+        updatedAt: {
+            type: 'string',
+            format: 'date-time',
+            example: '2022-06-02T08:32:06.267Z'
+        }
+    }
+} as const;
+
+export const $Users_Permissions_UserRegistration = {
+    type: 'object',
+    properties: {
+        jwt: {
+            type: 'string',
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        },
+        user: {
+            '$ref': '#/components/schemas/Users-Permissions-User'
+        }
+    }
+} as const;
+
+export const $Users_Permissions_PermissionsTree = {
+    type: 'object',
+    additionalProperties: {
+        type: 'object',
+        description: 'every api',
+        properties: {
+            controllers: {
+                description: 'every controller of the api',
+                type: 'object',
+                additionalProperties: {
+                    type: 'object',
+                    additionalProperties: {
+                        description: 'every action of every controller',
+                        type: 'object',
+                        properties: {
+                            enabled: {
+                                type: 'boolean'
+                            },
+                            policy: {
+                                type: 'string'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+} as const;
