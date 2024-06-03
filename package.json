@@ -1,11 +1,11 @@
 {
   "name": "strapi-openapi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.ts",
   "license": "MIT",
   "private": "true",
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.46.3"
+    "@hey-api/openapi-ts": "0.45.1"
   },
   "scripts": {
     "openapi-ts": "openapi-ts -i schema.json -o src/client --name=Client"
