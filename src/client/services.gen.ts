@@ -4,127 +4,142 @@ import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import type { GetProfileInfosData, GetProfileInfosResponse, PostProfileInfosData, PostProfileInfosResponse, GetProfileInfosIdData, GetProfileInfosIdResponse, PutProfileInfosIdData, PutProfileInfosIdResponse, DeleteProfileInfosIdData, DeleteProfileInfosIdResponse } from './types.gen';
 
-/**
- * @param data The data for the request.
- * @param data.sort Sort by attributes ascending (asc) or descending (desc)
- * @param data.paginationWithCount Return page/pageSize (default: true)
- * @param data.paginationPage Page number (default: 0)
- * @param data.paginationPageSize Page size (default: 25)
- * @param data.paginationStart Offset value (default: 0)
- * @param data.paginationLimit Number of entities to return (default: 25)
- * @param data.fields Fields to return (ex: title,author)
- * @param data.populate Relations to return
- * @param data.filters Filters to apply
- * @param data.locale Locale to apply
- * @returns ProfileInfoListResponse OK
- * @throws ApiError
- */
-export const getProfileInfos = (data: GetProfileInfosData = {}): CancelablePromise<GetProfileInfosResponse> => { return this.httpRequest.request({
-    method: 'GET',
-    url: '/profile-infos',
-    query: {
-        sort: data.sort,
-        'pagination[withCount]': data.paginationWithCount,
-        'pagination[page]': data.paginationPage,
-        'pagination[pageSize]': data.paginationPageSize,
-        'pagination[start]': data.paginationStart,
-        'pagination[limit]': data.paginationLimit,
-        fields: data.fields,
-        populate: data.populate,
-        filters: data.filters,
-        locale: data.locale
-    },
-    errors: {
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        500: 'Internal Server Error'
+export class ProfileInfoService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.sort Sort by attributes ascending (asc) or descending (desc)
+     * @param data.paginationWithCount Return page/pageSize (default: true)
+     * @param data.paginationPage Page number (default: 0)
+     * @param data.paginationPageSize Page size (default: 25)
+     * @param data.paginationStart Offset value (default: 0)
+     * @param data.paginationLimit Number of entities to return (default: 25)
+     * @param data.fields Fields to return (ex: title,author)
+     * @param data.populate Relations to return
+     * @param data.filters Filters to apply
+     * @param data.locale Locale to apply
+     * @returns ProfileInfoListResponse OK
+     * @throws ApiError
+     */
+    public getProfileInfos(data: GetProfileInfosData = {}): CancelablePromise<GetProfileInfosResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/profile-infos',
+            query: {
+                sort: data.sort,
+                'pagination[withCount]': data.paginationWithCount,
+                'pagination[page]': data.paginationPage,
+                'pagination[pageSize]': data.paginationPageSize,
+                'pagination[start]': data.paginationStart,
+                'pagination[limit]': data.paginationLimit,
+                fields: data.fields,
+                populate: data.populate,
+                filters: data.filters,
+                locale: data.locale
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
     }
-}); };
-
-/**
- * @param data The data for the request.
- * @param data.requestBody
- * @returns ProfileInfoResponse OK
- * @throws ApiError
- */
-export const postProfileInfos = (data: PostProfileInfosData): CancelablePromise<PostProfileInfosResponse> => { return this.httpRequest.request({
-    method: 'POST',
-    url: '/profile-infos',
-    body: data.requestBody,
-    mediaType: 'application/json',
-    errors: {
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        500: 'Internal Server Error'
+    
+    /**
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns ProfileInfoResponse OK
+     * @throws ApiError
+     */
+    public postProfileInfos(data: PostProfileInfosData): CancelablePromise<PostProfileInfosResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/profile-infos',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
     }
-}); };
-
-/**
- * @param data The data for the request.
- * @param data.id
- * @returns ProfileInfoResponse OK
- * @throws ApiError
- */
-export const getProfileInfosId = (data: GetProfileInfosIdData): CancelablePromise<GetProfileInfosIdResponse> => { return this.httpRequest.request({
-    method: 'GET',
-    url: '/profile-infos/{id}',
-    path: {
-        id: data.id
-    },
-    errors: {
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        500: 'Internal Server Error'
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns ProfileInfoResponse OK
+     * @throws ApiError
+     */
+    public getProfileInfosId(data: GetProfileInfosIdData): CancelablePromise<GetProfileInfosIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/profile-infos/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
     }
-}); };
-
-/**
- * @param data The data for the request.
- * @param data.id
- * @param data.requestBody
- * @returns ProfileInfoResponse OK
- * @throws ApiError
- */
-export const putProfileInfosId = (data: PutProfileInfosIdData): CancelablePromise<PutProfileInfosIdResponse> => { return this.httpRequest.request({
-    method: 'PUT',
-    url: '/profile-infos/{id}',
-    path: {
-        id: data.id
-    },
-    body: data.requestBody,
-    mediaType: 'application/json',
-    errors: {
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        500: 'Internal Server Error'
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody
+     * @returns ProfileInfoResponse OK
+     * @throws ApiError
+     */
+    public putProfileInfosId(data: PutProfileInfosIdData): CancelablePromise<PutProfileInfosIdResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/profile-infos/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
     }
-}); };
-
-/**
- * @param data The data for the request.
- * @param data.id
- * @returns number OK
- * @throws ApiError
- */
-export const deleteProfileInfosId = (data: DeleteProfileInfosIdData): CancelablePromise<DeleteProfileInfosIdResponse> => { return this.httpRequest.request({
-    method: 'DELETE',
-    url: '/profile-infos/{id}',
-    path: {
-        id: data.id
-    },
-    errors: {
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        500: 'Internal Server Error'
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns number OK
+     * @throws ApiError
+     */
+    public deleteProfileInfosId(data: DeleteProfileInfosIdData): CancelablePromise<DeleteProfileInfosIdResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/profile-infos/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
     }
-}); };
+    
+}
