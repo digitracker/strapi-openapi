@@ -6,4 +6,12 @@ download_schema:
 generate:
 	yarn openapi-ts
 
-all: download_schema generate
+publish:
+	yarn version --patch
+	git add .
+	git commit -m "dev"
+	git push origin master
+
+
+all: download_schema generate publish
+
