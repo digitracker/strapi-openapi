@@ -20,6 +20,7 @@ export type ProfileInfoRequest = {
     data: {
         user?: number | string;
         description?: string;
+        name?: string;
     };
 };
 
@@ -134,6 +135,7 @@ export type ProfileInfo = {
         };
     };
     description?: string;
+    name?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;

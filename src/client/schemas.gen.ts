@@ -58,6 +58,9 @@ export const $ProfileInfoRequest = {
                 },
                 description: {
                     type: 'string'
+                },
+                name: {
+                    type: 'string'
                 }
             }
         }
@@ -385,6 +388,9 @@ export const $ProfileInfo = {
             }
         },
         description: {
+            type: 'string'
+        },
+        name: {
             type: 'string'
         },
         createdAt: {
