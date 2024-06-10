@@ -18,7 +18,7 @@ export type Error = {
 
 export type ProfileInfoRequest = {
     data: {
-        user?: number | string;
+        users_permissions_user?: number | string;
         description?: string;
         name?: string;
     };
@@ -42,39 +42,29 @@ export type ProfileInfoListResponse = {
 };
 
 export type ProfileInfo = {
-    user?: {
+    users_permissions_user?: {
         data?: {
             id?: number;
             attributes?: {
-                firstname?: string;
-                lastname?: string;
                 username?: string;
                 email?: string;
+                provider?: string;
                 resetPasswordToken?: string;
-                registrationToken?: string;
-                isActive?: boolean;
-                roles?: {
-                    data?: Array<{
+                confirmationToken?: string;
+                confirmed?: boolean;
+                blocked?: boolean;
+                role?: {
+                    data?: {
                         id?: number;
                         attributes?: {
                             name?: string;
-                            code?: string;
                             description?: string;
-                            users?: {
-                                data?: Array<{
-                                    id?: number;
-                                    attributes?: unknown;
-                                }>;
-                            };
+                            type?: string;
                             permissions?: {
                                 data?: Array<{
                                     id?: number;
                                     attributes?: {
                                         action?: string;
-                                        actionParameters?: unknown;
-                                        subject?: string;
-                                        properties?: unknown;
-                                        conditions?: unknown;
                                         role?: {
                                             data?: {
                                                 id?: number;
@@ -86,7 +76,93 @@ export type ProfileInfo = {
                                         createdBy?: {
                                             data?: {
                                                 id?: number;
-                                                attributes?: unknown;
+                                                attributes?: {
+                                                    firstname?: string;
+                                                    lastname?: string;
+                                                    username?: string;
+                                                    email?: string;
+                                                    resetPasswordToken?: string;
+                                                    registrationToken?: string;
+                                                    isActive?: boolean;
+                                                    roles?: {
+                                                        data?: Array<{
+                                                            id?: number;
+                                                            attributes?: {
+                                                                name?: string;
+                                                                code?: string;
+                                                                description?: string;
+                                                                users?: {
+                                                                    data?: Array<{
+                                                                        id?: number;
+                                                                        attributes?: unknown;
+                                                                    }>;
+                                                                };
+                                                                permissions?: {
+                                                                    data?: Array<{
+                                                                        id?: number;
+                                                                        attributes?: {
+                                                                            action?: string;
+                                                                            actionParameters?: unknown;
+                                                                            subject?: string;
+                                                                            properties?: unknown;
+                                                                            conditions?: unknown;
+                                                                            role?: {
+                                                                                data?: {
+                                                                                    id?: number;
+                                                                                    attributes?: unknown;
+                                                                                };
+                                                                            };
+                                                                            createdAt?: string;
+                                                                            updatedAt?: string;
+                                                                            createdBy?: {
+                                                                                data?: {
+                                                                                    id?: number;
+                                                                                    attributes?: unknown;
+                                                                                };
+                                                                            };
+                                                                            updatedBy?: {
+                                                                                data?: {
+                                                                                    id?: number;
+                                                                                    attributes?: unknown;
+                                                                                };
+                                                                            };
+                                                                        };
+                                                                    }>;
+                                                                };
+                                                                createdAt?: string;
+                                                                updatedAt?: string;
+                                                                createdBy?: {
+                                                                    data?: {
+                                                                        id?: number;
+                                                                        attributes?: unknown;
+                                                                    };
+                                                                };
+                                                                updatedBy?: {
+                                                                    data?: {
+                                                                        id?: number;
+                                                                        attributes?: unknown;
+                                                                    };
+                                                                };
+                                                            };
+                                                        }>;
+                                                    };
+                                                    blocked?: boolean;
+                                                    preferedLanguage?: string;
+                                                    createdAt?: string;
+                                                    updatedAt?: string;
+                                                    createdBy?: {
+                                                        data?: {
+                                                            id?: number;
+                                                            attributes?: unknown;
+                                                        };
+                                                    };
+                                                    updatedBy?: {
+                                                        data?: {
+                                                            id?: number;
+                                                            attributes?: unknown;
+                                                        };
+                                                    };
+                                                };
                                             };
                                         };
                                         updatedBy?: {
@@ -96,6 +172,12 @@ export type ProfileInfo = {
                                             };
                                         };
                                     };
+                                }>;
+                            };
+                            users?: {
+                                data?: Array<{
+                                    id?: number;
+                                    attributes?: unknown;
                                 }>;
                             };
                             createdAt?: string;
@@ -113,10 +195,8 @@ export type ProfileInfo = {
                                 };
                             };
                         };
-                    }>;
+                    };
                 };
-                blocked?: boolean;
-                preferedLanguage?: string;
                 createdAt?: string;
                 updatedAt?: string;
                 createdBy?: {
