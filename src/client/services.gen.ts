@@ -2,7 +2,147 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { GetProfileInfosData, GetProfileInfosResponse, PostProfileInfosData, PostProfileInfosResponse, GetProfileInfosIdData, GetProfileInfosIdResponse, PutProfileInfosIdData, PutProfileInfosIdResponse, DeleteProfileInfosIdData, DeleteProfileInfosIdResponse, GetConnectByProviderData, GetConnectByProviderResponse, PostAuthLocalData, PostAuthLocalResponse, PostAuthLocalRegisterData, PostAuthLocalRegisterResponse, GetAuthByProviderCallbackData, GetAuthByProviderCallbackResponse, PostAuthForgotPasswordData, PostAuthForgotPasswordResponse, PostAuthResetPasswordData, PostAuthResetPasswordResponse, PostAuthChangePasswordData, PostAuthChangePasswordResponse, GetAuthEmailConfirmationData, GetAuthEmailConfirmationResponse, PostAuthSendEmailConfirmationData, PostAuthSendEmailConfirmationResponse, GetUsersPermissionsPermissionsResponse, GetUsersPermissionsRolesResponse, PostUsersPermissionsRolesData, PostUsersPermissionsRolesResponse, GetUsersPermissionsRolesByIdData, GetUsersPermissionsRolesByIdResponse, PutUsersPermissionsRolesByRoleData, PutUsersPermissionsRolesByRoleResponse, DeleteUsersPermissionsRolesByRoleData, DeleteUsersPermissionsRolesByRoleResponse, GetUsersResponse, PostUsersData, PostUsersResponse, GetUsersByIdData, GetUsersByIdResponse, PutUsersByIdData, PutUsersByIdResponse, DeleteUsersByIdData, DeleteUsersByIdResponse, GetUsersMeResponse, GetUsersCountResponse } from './types.gen';
+import type { GetArticlesData, GetArticlesResponse, PostArticlesData, PostArticlesResponse, GetArticlesIdData, GetArticlesIdResponse, PutArticlesIdData, PutArticlesIdResponse, DeleteArticlesIdData, DeleteArticlesIdResponse, GetProfileInfosData, GetProfileInfosResponse, PostProfileInfosData, PostProfileInfosResponse, GetProfileInfosIdData, GetProfileInfosIdResponse, PutProfileInfosIdData, PutProfileInfosIdResponse, DeleteProfileInfosIdData, DeleteProfileInfosIdResponse, GetProjectsData, GetProjectsResponse, PostProjectsData, PostProjectsResponse, GetProjectsIdData, GetProjectsIdResponse, PutProjectsIdData, PutProjectsIdResponse, DeleteProjectsIdData, DeleteProjectsIdResponse, GetConnectByProviderData, GetConnectByProviderResponse, PostAuthLocalData, PostAuthLocalResponse, PostAuthLocalRegisterData, PostAuthLocalRegisterResponse, GetAuthByProviderCallbackData, GetAuthByProviderCallbackResponse, PostAuthForgotPasswordData, PostAuthForgotPasswordResponse, PostAuthResetPasswordData, PostAuthResetPasswordResponse, PostAuthChangePasswordData, PostAuthChangePasswordResponse, GetAuthEmailConfirmationData, GetAuthEmailConfirmationResponse, PostAuthSendEmailConfirmationData, PostAuthSendEmailConfirmationResponse, GetUsersPermissionsPermissionsResponse, GetUsersPermissionsRolesResponse, PostUsersPermissionsRolesData, PostUsersPermissionsRolesResponse, GetUsersPermissionsRolesByIdData, GetUsersPermissionsRolesByIdResponse, PutUsersPermissionsRolesByRoleData, PutUsersPermissionsRolesByRoleResponse, DeleteUsersPermissionsRolesByRoleData, DeleteUsersPermissionsRolesByRoleResponse, GetUsersResponse, PostUsersData, PostUsersResponse, GetUsersByIdData, GetUsersByIdResponse, PutUsersByIdData, PutUsersByIdResponse, DeleteUsersByIdData, DeleteUsersByIdResponse, GetUsersMeResponse, GetUsersCountResponse } from './types.gen';
+
+export class ArticleService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.sort Sort by attributes ascending (asc) or descending (desc)
+     * @param data.paginationWithCount Return page/pageSize (default: true)
+     * @param data.paginationPage Page number (default: 0)
+     * @param data.paginationPageSize Page size (default: 25)
+     * @param data.paginationStart Offset value (default: 0)
+     * @param data.paginationLimit Number of entities to return (default: 25)
+     * @param data.fields Fields to return (ex: title,author)
+     * @param data.populate Relations to return
+     * @param data.filters Filters to apply
+     * @param data.locale Locale to apply
+     * @returns ArticleListResponse OK
+     * @throws ApiError
+     */
+    public getArticles(data: GetArticlesData = {}): CancelablePromise<GetArticlesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/articles',
+            query: {
+                sort: data.sort,
+                'pagination[withCount]': data.paginationWithCount,
+                'pagination[page]': data.paginationPage,
+                'pagination[pageSize]': data.paginationPageSize,
+                'pagination[start]': data.paginationStart,
+                'pagination[limit]': data.paginationLimit,
+                fields: data.fields,
+                populate: data.populate,
+                filters: data.filters,
+                locale: data.locale
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns ArticleResponse OK
+     * @throws ApiError
+     */
+    public postArticles(data: PostArticlesData): CancelablePromise<PostArticlesResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/articles',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns ArticleResponse OK
+     * @throws ApiError
+     */
+    public getArticlesId(data: GetArticlesIdData): CancelablePromise<GetArticlesIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/articles/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody
+     * @returns ArticleResponse OK
+     * @throws ApiError
+     */
+    public putArticlesId(data: PutArticlesIdData): CancelablePromise<PutArticlesIdResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/articles/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns number OK
+     * @throws ApiError
+     */
+    public deleteArticlesId(data: DeleteArticlesIdData): CancelablePromise<DeleteArticlesIdResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/articles/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+}
 
 export class ProfileInfoService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -129,6 +269,146 @@ export class ProfileInfoService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/profile-infos/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+}
+
+export class ProjectService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.sort Sort by attributes ascending (asc) or descending (desc)
+     * @param data.paginationWithCount Return page/pageSize (default: true)
+     * @param data.paginationPage Page number (default: 0)
+     * @param data.paginationPageSize Page size (default: 25)
+     * @param data.paginationStart Offset value (default: 0)
+     * @param data.paginationLimit Number of entities to return (default: 25)
+     * @param data.fields Fields to return (ex: title,author)
+     * @param data.populate Relations to return
+     * @param data.filters Filters to apply
+     * @param data.locale Locale to apply
+     * @returns ProjectListResponse OK
+     * @throws ApiError
+     */
+    public getProjects(data: GetProjectsData = {}): CancelablePromise<GetProjectsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/projects',
+            query: {
+                sort: data.sort,
+                'pagination[withCount]': data.paginationWithCount,
+                'pagination[page]': data.paginationPage,
+                'pagination[pageSize]': data.paginationPageSize,
+                'pagination[start]': data.paginationStart,
+                'pagination[limit]': data.paginationLimit,
+                fields: data.fields,
+                populate: data.populate,
+                filters: data.filters,
+                locale: data.locale
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns ProjectResponse OK
+     * @throws ApiError
+     */
+    public postProjects(data: PostProjectsData): CancelablePromise<PostProjectsResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/projects',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns ProjectResponse OK
+     * @throws ApiError
+     */
+    public getProjectsId(data: GetProjectsIdData): CancelablePromise<GetProjectsIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/projects/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody
+     * @returns ProjectResponse OK
+     * @throws ApiError
+     */
+    public putProjectsId(data: PutProjectsIdData): CancelablePromise<PutProjectsIdResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/projects/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: 'Bad Request',
+                401: 'Unauthorized',
+                403: 'Forbidden',
+                404: 'Not Found',
+                500: 'Internal Server Error'
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns number OK
+     * @throws ApiError
+     */
+    public deleteProjectsId(data: DeleteProjectsIdData): CancelablePromise<DeleteProjectsIdResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/projects/{id}',
             path: {
                 id: data.id
             },

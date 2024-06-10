@@ -16,6 +16,147 @@ export type Error = {
     };
 };
 
+export type ArticleRequest = {
+    data: {
+        title?: string;
+        content?: unknown;
+    };
+};
+
+export type ArticleListResponseDataItem = {
+    id?: number;
+    attributes?: Article;
+};
+
+export type ArticleListResponse = {
+    data?: Array<ArticleListResponseDataItem>;
+    meta?: {
+        pagination?: {
+            page?: number;
+            pageSize?: number;
+            pageCount?: number;
+            total?: number;
+        };
+    };
+};
+
+export type Article = {
+    title?: string;
+    content?: unknown;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: {
+        data?: {
+            id?: number;
+            attributes?: {
+                firstname?: string;
+                lastname?: string;
+                username?: string;
+                email?: string;
+                resetPasswordToken?: string;
+                registrationToken?: string;
+                isActive?: boolean;
+                roles?: {
+                    data?: Array<{
+                        id?: number;
+                        attributes?: {
+                            name?: string;
+                            code?: string;
+                            description?: string;
+                            users?: {
+                                data?: Array<{
+                                    id?: number;
+                                    attributes?: unknown;
+                                }>;
+                            };
+                            permissions?: {
+                                data?: Array<{
+                                    id?: number;
+                                    attributes?: {
+                                        action?: string;
+                                        actionParameters?: unknown;
+                                        subject?: string;
+                                        properties?: unknown;
+                                        conditions?: unknown;
+                                        role?: {
+                                            data?: {
+                                                id?: number;
+                                                attributes?: unknown;
+                                            };
+                                        };
+                                        createdAt?: string;
+                                        updatedAt?: string;
+                                        createdBy?: {
+                                            data?: {
+                                                id?: number;
+                                                attributes?: unknown;
+                                            };
+                                        };
+                                        updatedBy?: {
+                                            data?: {
+                                                id?: number;
+                                                attributes?: unknown;
+                                            };
+                                        };
+                                    };
+                                }>;
+                            };
+                            createdAt?: string;
+                            updatedAt?: string;
+                            createdBy?: {
+                                data?: {
+                                    id?: number;
+                                    attributes?: unknown;
+                                };
+                            };
+                            updatedBy?: {
+                                data?: {
+                                    id?: number;
+                                    attributes?: unknown;
+                                };
+                            };
+                        };
+                    }>;
+                };
+                blocked?: boolean;
+                preferedLanguage?: string;
+                createdAt?: string;
+                updatedAt?: string;
+                createdBy?: {
+                    data?: {
+                        id?: number;
+                        attributes?: unknown;
+                    };
+                };
+                updatedBy?: {
+                    data?: {
+                        id?: number;
+                        attributes?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    updatedBy?: {
+        data?: {
+            id?: number;
+            attributes?: unknown;
+        };
+    };
+};
+
+export type ArticleResponseDataObject = {
+    id?: number;
+    attributes?: Article;
+};
+
+export type ArticleResponse = {
+    data?: ArticleResponseDataObject;
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
 export type ProfileInfoRequest = {
     data: {
         users_permissions_user?: number | string;
@@ -245,6 +386,147 @@ export type ProfileInfoResponse = {
     };
 };
 
+export type ProjectRequest = {
+    data: {
+        name?: string;
+        content?: string;
+    };
+};
+
+export type ProjectListResponseDataItem = {
+    id?: number;
+    attributes?: Project;
+};
+
+export type ProjectListResponse = {
+    data?: Array<ProjectListResponseDataItem>;
+    meta?: {
+        pagination?: {
+            page?: number;
+            pageSize?: number;
+            pageCount?: number;
+            total?: number;
+        };
+    };
+};
+
+export type Project = {
+    name?: string;
+    content?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: {
+        data?: {
+            id?: number;
+            attributes?: {
+                firstname?: string;
+                lastname?: string;
+                username?: string;
+                email?: string;
+                resetPasswordToken?: string;
+                registrationToken?: string;
+                isActive?: boolean;
+                roles?: {
+                    data?: Array<{
+                        id?: number;
+                        attributes?: {
+                            name?: string;
+                            code?: string;
+                            description?: string;
+                            users?: {
+                                data?: Array<{
+                                    id?: number;
+                                    attributes?: unknown;
+                                }>;
+                            };
+                            permissions?: {
+                                data?: Array<{
+                                    id?: number;
+                                    attributes?: {
+                                        action?: string;
+                                        actionParameters?: unknown;
+                                        subject?: string;
+                                        properties?: unknown;
+                                        conditions?: unknown;
+                                        role?: {
+                                            data?: {
+                                                id?: number;
+                                                attributes?: unknown;
+                                            };
+                                        };
+                                        createdAt?: string;
+                                        updatedAt?: string;
+                                        createdBy?: {
+                                            data?: {
+                                                id?: number;
+                                                attributes?: unknown;
+                                            };
+                                        };
+                                        updatedBy?: {
+                                            data?: {
+                                                id?: number;
+                                                attributes?: unknown;
+                                            };
+                                        };
+                                    };
+                                }>;
+                            };
+                            createdAt?: string;
+                            updatedAt?: string;
+                            createdBy?: {
+                                data?: {
+                                    id?: number;
+                                    attributes?: unknown;
+                                };
+                            };
+                            updatedBy?: {
+                                data?: {
+                                    id?: number;
+                                    attributes?: unknown;
+                                };
+                            };
+                        };
+                    }>;
+                };
+                blocked?: boolean;
+                preferedLanguage?: string;
+                createdAt?: string;
+                updatedAt?: string;
+                createdBy?: {
+                    data?: {
+                        id?: number;
+                        attributes?: unknown;
+                    };
+                };
+                updatedBy?: {
+                    data?: {
+                        id?: number;
+                        attributes?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    updatedBy?: {
+        data?: {
+            id?: number;
+            attributes?: unknown;
+        };
+    };
+};
+
+export type ProjectResponseDataObject = {
+    id?: number;
+    attributes?: Project;
+};
+
+export type ProjectResponse = {
+    data?: ProjectResponseDataObject;
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
 export type Users_Permissions_Role = {
     id?: number;
     name?: string;
@@ -285,6 +567,78 @@ export type Users_Permissions_PermissionsTree = {
         };
     };
 };
+
+export type GetArticlesData = {
+    /**
+     * Fields to return (ex: title,author)
+     */
+    fields?: string;
+    /**
+     * Filters to apply
+     */
+    filters?: {
+        [key: string]: unknown;
+    };
+    /**
+     * Locale to apply
+     */
+    locale?: string;
+    /**
+     * Number of entities to return (default: 25)
+     */
+    paginationLimit?: number;
+    /**
+     * Page number (default: 0)
+     */
+    paginationPage?: number;
+    /**
+     * Page size (default: 25)
+     */
+    paginationPageSize?: number;
+    /**
+     * Offset value (default: 0)
+     */
+    paginationStart?: number;
+    /**
+     * Return page/pageSize (default: true)
+     */
+    paginationWithCount?: boolean;
+    /**
+     * Relations to return
+     */
+    populate?: string;
+    /**
+     * Sort by attributes ascending (asc) or descending (desc)
+     */
+    sort?: string;
+};
+
+export type GetArticlesResponse = ArticleListResponse;
+
+export type PostArticlesData = {
+    requestBody: ArticleRequest;
+};
+
+export type PostArticlesResponse = ArticleResponse;
+
+export type GetArticlesIdData = {
+    id: number;
+};
+
+export type GetArticlesIdResponse = ArticleResponse;
+
+export type PutArticlesIdData = {
+    id: number;
+    requestBody: ArticleRequest;
+};
+
+export type PutArticlesIdResponse = ArticleResponse;
+
+export type DeleteArticlesIdData = {
+    id: number;
+};
+
+export type DeleteArticlesIdResponse = number;
 
 export type GetProfileInfosData = {
     /**
@@ -357,6 +711,78 @@ export type DeleteProfileInfosIdData = {
 };
 
 export type DeleteProfileInfosIdResponse = number;
+
+export type GetProjectsData = {
+    /**
+     * Fields to return (ex: title,author)
+     */
+    fields?: string;
+    /**
+     * Filters to apply
+     */
+    filters?: {
+        [key: string]: unknown;
+    };
+    /**
+     * Locale to apply
+     */
+    locale?: string;
+    /**
+     * Number of entities to return (default: 25)
+     */
+    paginationLimit?: number;
+    /**
+     * Page number (default: 0)
+     */
+    paginationPage?: number;
+    /**
+     * Page size (default: 25)
+     */
+    paginationPageSize?: number;
+    /**
+     * Offset value (default: 0)
+     */
+    paginationStart?: number;
+    /**
+     * Return page/pageSize (default: true)
+     */
+    paginationWithCount?: boolean;
+    /**
+     * Relations to return
+     */
+    populate?: string;
+    /**
+     * Sort by attributes ascending (asc) or descending (desc)
+     */
+    sort?: string;
+};
+
+export type GetProjectsResponse = ProjectListResponse;
+
+export type PostProjectsData = {
+    requestBody: ProjectRequest;
+};
+
+export type PostProjectsResponse = ProjectResponse;
+
+export type GetProjectsIdData = {
+    id: number;
+};
+
+export type GetProjectsIdResponse = ProjectResponse;
+
+export type PutProjectsIdData = {
+    id: number;
+    requestBody: ProjectRequest;
+};
+
+export type PutProjectsIdResponse = ProjectResponse;
+
+export type DeleteProjectsIdData = {
+    id: number;
+};
+
+export type DeleteProjectsIdResponse = number;
 
 export type GetConnectByProviderData = {
     /**
@@ -560,6 +986,155 @@ export type GetUsersMeResponse = Users_Permissions_User | Error;
 export type GetUsersCountResponse = number | Error;
 
 export type $OpenApiTs = {
+    '/articles': {
+        get: {
+            req: GetArticlesData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ArticleListResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+        post: {
+            req: PostArticlesData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ArticleResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+    };
+    '/articles/{id}': {
+        get: {
+            req: GetArticlesIdData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ArticleResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+        put: {
+            req: PutArticlesIdData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ArticleResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+        delete: {
+            req: DeleteArticlesIdData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: number;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+    };
     '/profile-infos': {
         get: {
             req: GetProfileInfosData;
@@ -681,6 +1256,155 @@ export type $OpenApiTs = {
         };
         delete: {
             req: DeleteProfileInfosIdData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: number;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+    };
+    '/projects': {
+        get: {
+            req: GetProjectsData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ProjectListResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+        post: {
+            req: PostProjectsData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ProjectResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+    };
+    '/projects/{id}': {
+        get: {
+            req: GetProjectsIdData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ProjectResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+        put: {
+            req: PutProjectsIdData;
+            res: {
+                /**
+                 * OK
+                 */
+                200: ProjectResponse;
+                /**
+                 * Bad Request
+                 */
+                400: Error;
+                /**
+                 * Unauthorized
+                 */
+                401: Error;
+                /**
+                 * Forbidden
+                 */
+                403: Error;
+                /**
+                 * Not Found
+                 */
+                404: Error;
+                /**
+                 * Internal Server Error
+                 */
+                500: Error;
+            };
+        };
+        delete: {
+            req: DeleteProjectsIdData;
             res: {
                 /**
                  * OK
