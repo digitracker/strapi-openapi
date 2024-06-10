@@ -390,6 +390,7 @@ export type ProjectRequest = {
     data: {
         name?: string;
         content?: string;
+        users_permissions_user?: number | string;
     };
 };
 
@@ -413,41 +414,29 @@ export type ProjectListResponse = {
 export type Project = {
     name?: string;
     content?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: {
+    users_permissions_user?: {
         data?: {
             id?: number;
             attributes?: {
-                firstname?: string;
-                lastname?: string;
                 username?: string;
                 email?: string;
+                provider?: string;
                 resetPasswordToken?: string;
-                registrationToken?: string;
-                isActive?: boolean;
-                roles?: {
-                    data?: Array<{
+                confirmationToken?: string;
+                confirmed?: boolean;
+                blocked?: boolean;
+                role?: {
+                    data?: {
                         id?: number;
                         attributes?: {
                             name?: string;
-                            code?: string;
                             description?: string;
-                            users?: {
-                                data?: Array<{
-                                    id?: number;
-                                    attributes?: unknown;
-                                }>;
-                            };
+                            type?: string;
                             permissions?: {
                                 data?: Array<{
                                     id?: number;
                                     attributes?: {
                                         action?: string;
-                                        actionParameters?: unknown;
-                                        subject?: string;
-                                        properties?: unknown;
-                                        conditions?: unknown;
                                         role?: {
                                             data?: {
                                                 id?: number;
@@ -459,7 +448,93 @@ export type Project = {
                                         createdBy?: {
                                             data?: {
                                                 id?: number;
-                                                attributes?: unknown;
+                                                attributes?: {
+                                                    firstname?: string;
+                                                    lastname?: string;
+                                                    username?: string;
+                                                    email?: string;
+                                                    resetPasswordToken?: string;
+                                                    registrationToken?: string;
+                                                    isActive?: boolean;
+                                                    roles?: {
+                                                        data?: Array<{
+                                                            id?: number;
+                                                            attributes?: {
+                                                                name?: string;
+                                                                code?: string;
+                                                                description?: string;
+                                                                users?: {
+                                                                    data?: Array<{
+                                                                        id?: number;
+                                                                        attributes?: unknown;
+                                                                    }>;
+                                                                };
+                                                                permissions?: {
+                                                                    data?: Array<{
+                                                                        id?: number;
+                                                                        attributes?: {
+                                                                            action?: string;
+                                                                            actionParameters?: unknown;
+                                                                            subject?: string;
+                                                                            properties?: unknown;
+                                                                            conditions?: unknown;
+                                                                            role?: {
+                                                                                data?: {
+                                                                                    id?: number;
+                                                                                    attributes?: unknown;
+                                                                                };
+                                                                            };
+                                                                            createdAt?: string;
+                                                                            updatedAt?: string;
+                                                                            createdBy?: {
+                                                                                data?: {
+                                                                                    id?: number;
+                                                                                    attributes?: unknown;
+                                                                                };
+                                                                            };
+                                                                            updatedBy?: {
+                                                                                data?: {
+                                                                                    id?: number;
+                                                                                    attributes?: unknown;
+                                                                                };
+                                                                            };
+                                                                        };
+                                                                    }>;
+                                                                };
+                                                                createdAt?: string;
+                                                                updatedAt?: string;
+                                                                createdBy?: {
+                                                                    data?: {
+                                                                        id?: number;
+                                                                        attributes?: unknown;
+                                                                    };
+                                                                };
+                                                                updatedBy?: {
+                                                                    data?: {
+                                                                        id?: number;
+                                                                        attributes?: unknown;
+                                                                    };
+                                                                };
+                                                            };
+                                                        }>;
+                                                    };
+                                                    blocked?: boolean;
+                                                    preferedLanguage?: string;
+                                                    createdAt?: string;
+                                                    updatedAt?: string;
+                                                    createdBy?: {
+                                                        data?: {
+                                                            id?: number;
+                                                            attributes?: unknown;
+                                                        };
+                                                    };
+                                                    updatedBy?: {
+                                                        data?: {
+                                                            id?: number;
+                                                            attributes?: unknown;
+                                                        };
+                                                    };
+                                                };
                                             };
                                         };
                                         updatedBy?: {
@@ -469,6 +544,12 @@ export type Project = {
                                             };
                                         };
                                     };
+                                }>;
+                            };
+                            users?: {
+                                data?: Array<{
+                                    id?: number;
+                                    attributes?: unknown;
                                 }>;
                             };
                             createdAt?: string;
@@ -486,10 +567,8 @@ export type Project = {
                                 };
                             };
                         };
-                    }>;
+                    };
                 };
-                blocked?: boolean;
-                preferedLanguage?: string;
                 createdAt?: string;
                 updatedAt?: string;
                 createdBy?: {
@@ -505,6 +584,14 @@ export type Project = {
                     };
                 };
             };
+        };
+    };
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: {
+        data?: {
+            id?: number;
+            attributes?: unknown;
         };
     };
     updatedBy?: {
